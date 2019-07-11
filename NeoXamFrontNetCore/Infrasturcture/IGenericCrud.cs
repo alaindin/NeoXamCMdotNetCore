@@ -15,5 +15,6 @@ namespace NeoXamFrontNetCore.Infrasturcture
         T FindById(long id);
         List<T> GetAll();
 
+
     }
 }
