@@ -21,7 +21,7 @@ namespace NeoXamFrontNetCore.Controllers
         public async Task<IActionResult> Index()
         {
            // var deps = _service.GetAll();
-            var data = await ApiClientFactory.Instance.GetAll();
+            
 
             string alaa = "ok";
 
