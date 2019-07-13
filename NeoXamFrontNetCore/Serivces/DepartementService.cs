@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public partial class DepartementService 
+    public partial class DepartementService : IGenericCrud<Departement>
     {
         private readonly ApiClientFactory _apiClientFactory;
         public DepartementService(ApiClientFactory apiClientFactory)
