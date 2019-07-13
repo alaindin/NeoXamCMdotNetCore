@@ -6,16 +6,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NeoXamFrontNetCore.Config;
 using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
 {
     public class DepartementController : Controller
     {
+        DepartementService _departementSerivce;
+
+        public DepartementController(DepartementService departementSerivce)
+        {
+            _departementSerivce = departementSerivce;
+        }
         // GET: Departement
         public async Task<ActionResult> Index()
         {
             List<Departement> departements = new List<Departement>();
-            departements = await ApiClientFactory.Instance.GetAll();
+            departements = await _departementSerivce.GetAll();
             return View(departements);
         }
 

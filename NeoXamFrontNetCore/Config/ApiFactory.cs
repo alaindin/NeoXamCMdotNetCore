@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Config
 {
-    internal  class ApiClientFactory
+    public  class ApiClientFactory
     {
 
         private static Uri apiUri;
 
-        private static Lazy<ApiClient> restClient = new Lazy<ApiClient>(
-          () => new ApiClient(apiUri),
-          LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly ApiClient apiClient; 
 
-        static ApiClientFactory()
+        public ApiClientFactory()
         {
             apiUri = new Uri(ApiUrls.serverRootPath);
+            apiClient = new ApiClient(apiUri);
+            
         }
 
-        public static ApiClient Instance
+        public  ApiClient ApiClient
         {
             get
             {
-                return restClient.Value;
+                return apiClient;
             }
         }
 

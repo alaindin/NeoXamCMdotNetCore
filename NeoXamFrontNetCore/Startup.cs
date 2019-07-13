@@ -32,8 +32,8 @@ namespace NeoXamFrontNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-          //  services.AddSingleton<ApiClientFactory>();
-         //   services.AddTransient<DepartementService>();
+            services.AddSingleton<ApiClientFactory>();
+            services.AddTransient<DepartementService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

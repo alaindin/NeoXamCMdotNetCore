@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public partial class ApiClient 
+    public partial class DepartementService 
     {
-       
+        private readonly ApiClientFactory _apiClientFactory;
+        public DepartementService(ApiClientFactory apiClientFactory)
+        {
+            _apiClientFactory = apiClientFactory;
+        }
         public async Task AddAsync(Departement t)
         {
             throw new NotImplementedException();
@@ -28,9 +32,9 @@ namespace NeoXamFrontNetCore.Serivces
 
         public async Task<List<Departement>> GetAll()
         {
-            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 ApiUrls.GetDepartements));
-            return await GetAsync<List<Departement>>(requestUrl);
+            return await _apiClientFactory.ApiClient.GetAsync<List<Departement>>(requestUrl);
         }
 
         public async Task Update(long id, Departement t)
