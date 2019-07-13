@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NeoXamFrontNetCore.Config;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeoXamFrontNetCore.Config
+namespace NeoXamFrontNetCore.Serivces
 {
-    public class ApiClient 
+    public partial class ApiClient 
     {
         private readonly HttpClient _httpClient;
         private Uri BaseEndpoint { get; set; }

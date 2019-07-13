@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Config;
 using NeoXamFrontNetCore.Models;
 using NeoXamFrontNetCore.Serivces;
 
@@ -11,15 +12,18 @@ namespace NeoXamFrontNetCore.Controllers
 {
     public class HomeController : Controller
     {
-        private DepartementService _service;
+        
 
-        public HomeController(DepartementService service)
+        public HomeController()
         {
-            _service = service;
+           
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var deps = _service.GetAll();
+           // var deps = _service.GetAll();
+            var data = await ApiClientFactory.Instance.GetAll();
+
+            string alaa = "ok";
 
             return View();
         }
