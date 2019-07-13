@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NeoXamFrontNetCore.Config;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore
 {
@@ -30,6 +32,8 @@ namespace NeoXamFrontNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSingleton<ApiClientFactory>();
+            services.AddTransient<DepartementService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

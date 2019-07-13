@@ -9,11 +9,11 @@ namespace NeoXamFrontNetCore.Infrasturcture
     public interface IGenericCrud<T> where T : class
     {
 
-        void Add(T t);
-        void Update(long id, T t);
-        void Delete(long id);
-        T FindById(long id);
-        List<T> GetAll();
+        Task AddAsync(T t);
+        Task Update(long id, T t);
+        Task Delete(long id);
+        Task<T> FindById(long id);
+        Task<List<T>> GetAll();
 
 
     }
