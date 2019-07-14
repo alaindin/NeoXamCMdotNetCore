@@ -19,14 +19,14 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(Departement t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                  ApiUrls.AddDepartement));
             return await _apiClientFactory.ApiClient.PostAsync<Departement>(requestUrl,t);
         }
 
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                  ApiUrls.DeleteDepartement));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl,id);
         }
 
@@ -44,11 +44,11 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.GetAsync<List<Departement>>(requestUrl);
         }
 
-        public async Task<bool> Update(long id, Departement t)
+        public async Task<bool> Update(long id, Departement d)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                     ApiUrls.GetDepartements ));
-            return await _apiClientFactory.ApiClient.PutAsync<Departement>(requestUrl, t);
+                     ApiUrls.UpdateDepartement+id));
+            return await _apiClientFactory.ApiClient.PutAsync<Departement>(requestUrl, d);
         }
     }
 }
