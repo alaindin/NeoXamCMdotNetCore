@@ -41,14 +41,14 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.PutAsync<Entities.Action>(requestUrl, t);
         }
 
-       public async Task<Entities.Action> Get(long id)
+        public async Task<Entities.Action> IGenericCrud<Entities.Action>.Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.DeleteAction));
             return await _apiClientFactory.ApiClient.GetAsync<Entities.Action>(requestUrl);
         }
 
-      public  async Task<List<Entities.Action>> GetAll()
+        public async Task<List<Entities.Action>> IGenericCrud<Entities.Action>.GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.DeleteAction));

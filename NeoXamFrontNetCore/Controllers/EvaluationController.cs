@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Entities;
 using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
@@ -19,9 +20,12 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Evaluation
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<Evaluation> evaluations = new List<Evaluation>();
+            evaluations = await _evaluationService.GetAll();
+
+            return View(evaluations);
         }
 
         // GET: Evaluation/Details/5

@@ -18,10 +18,13 @@ namespace NeoXamFrontNetCore.Controllers
             _actionService = actionService;
         }
         // GET: Action
-        public ActionResult Index()
+        public  async Task<ActionResult> Index()
         {
-            return View();
+            List<Action> actions = new List<Action>;
+            actions = await _actionService.GetAll();
+            return View(actions);
         }
+        
 
         // GET: Action/Details/5
         public ActionResult Details(int id)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Entities;
 using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
@@ -16,12 +17,13 @@ namespace NeoXamFrontNetCore.Controllers
             _riskService = riskService;
         }
         // GET: Risk
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var risk = _riskService.GetAll().Result;
+            List<Risk> risks = new List<Risk>();
+            risks = await _riskService.GetAll();
 
 
-            return View(risk);
+            return View(risks);
         }
 
         // GET: Risk/Details/5

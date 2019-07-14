@@ -44,22 +44,34 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Code département</th>
+                                    <th>Code risque</th>
                                     <th>Libellé</th>
+                                    <th>Fait</th>
+                                    <th>Action Préventive</th>
+                                    <th>Action Consécutive</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var risk in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @risk.Code
-                                        </td>
-                                        <td>
-                                            @risk.Description
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @risk.Code
+                                    </td>
+                                    <td>
+                                        @risk.Description
+                                    </td>
+                                    <td>
+                                        @risk.Fait
+                                    </td>
+                                    <td>
+                                        @risk.ActionPreventive
+                                    </td>
+                                    <td>
+                                        @risk.ActionConsecutive
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

@@ -1,4 +1,4 @@
-﻿@model List<Departement>
+﻿@model List<Evaluation>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Liste des départements</h3>
+                <h3>Liste des évaluations des employés</h3>
             </div>
 
 
@@ -44,22 +44,30 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Code département</th>
-                                    <th>Libellé</th>
+                                    <th>Code Employé</th>
+                                    <th>Code Risque</th>
+                                    <th>Date de l'évaluation</th>
+                                    <th>Valeur de l'évaluation</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var dep in Model)
+                                @foreach (var eval in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @dep.Code
-                                        </td>
-                                        <td>
-                                            @dep.Libelle
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @eval.Emp
+                                    </td>
+                                    <td>
+                                        @eval.Risque
+                                    </td>
+                                    <td>
+                                        @eval.Date
+                                    </td>
+                                    <td>
+                                        @eval.RisqueGlobal
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

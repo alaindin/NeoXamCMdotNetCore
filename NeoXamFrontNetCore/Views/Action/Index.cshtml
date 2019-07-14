@@ -1,4 +1,4 @@
-﻿@model List<Departement>
+﻿@model List<NeoXamFrontNetCore.Entities.Action>
 @{
     ViewData["Title"] = "Index";
 }
@@ -44,22 +44,32 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Code département</th>
+                                    <th>Num Action</th>
                                     <th>Libellé</th>
+                                    <th>Date Prévue</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var dep in Model)
+                                @foreach (var Act in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @dep.Code
-                                        </td>
-                                        <td>
-                                            @dep.Libelle
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Act.Code
+                                    </td>
+                                    <td>
+                                        @Act.Label
+                                    </td>
+                                    <td>
+                                        @Act.Date
+                                    </td>
+                                    <td>
+                                        @Act.RisquesC
+                                    </td>
+                                    <td>
+                                        @Act.RisquesP
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
