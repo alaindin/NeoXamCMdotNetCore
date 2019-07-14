@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
 {
     public class ActionController : Controller
     {
+
+        ActionService _actionService;
+
+        public ActionController(ActionService actionService)
+        {
+            _actionService = actionService;
+        }
         // GET: Action
         public ActionResult Index()
         {

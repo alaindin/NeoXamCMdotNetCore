@@ -20,7 +20,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(ac t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.GetAllAction));
+                   ApiUrls.AddAction));
             return await _apiClientFactory.ApiClient.PostAsync<ac>(requestUrl, t);
         }
 
@@ -28,7 +28,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                  ApiUrls.DeleteAction));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
@@ -36,17 +36,23 @@ namespace NeoXamFrontNetCore.Serivces
 
         public async Task<bool> Update(long id, ac t)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.UpdateAction));
+            return await _apiClientFactory.ApiClient.PutAsync<ac>(requestUrl, t);
         }
 
-        Task<ac> IGenericCrud<ac>.Get(long id)
+        async Task<ac> IGenericCrud<ac>.Get(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.DeleteAction));
+            return await _apiClientFactory.ApiClient.GetAsync<ac>(requestUrl);
         }
 
-        Task<List<ac>> IGenericCrud<ac>.GetAll()
+        async Task<List<ac>> IGenericCrud<ac>.GetAll()
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.DeleteAction));
+            return await _apiClientFactory.ApiClient.GetAsync<List<ac>>(requestUrl);
         }
     }
 }

@@ -4,11 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
 {
     public class EvaluationController : Controller
     {
+
+        EvaluationService _evaluationService;
+
+        public EvaluationController(EvaluationService evaluationService)
+        {
+            _evaluationService = evaluationService;
+        }
+
         // GET: Evaluation
         public ActionResult Index()
         {
