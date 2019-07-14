@@ -13,7 +13,8 @@ namespace NeoXamFrontNetCore.Serivces
         private readonly ApiClientFactory _apiClientFactory;
         public EmployeeService(ApiClientFactory apiClientFactory)
         {
-            _apiClientFactory = apiClientFactory;
+       
+                this._apiClientFactory= apiClientFactory;
         }
 
         public async Task<bool> AddAsync(Employee t)
@@ -40,15 +41,17 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<List<Employee>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                    ApiUrls.GetEmps));
             return await _apiClientFactory.ApiClient.GetAsync<List<Employee>>(requestUrl);
         }
+
 
         public async Task<bool> Update(long id, Employee d)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                      ApiUrls.UpdateDepartement + id));
             return await _apiClientFactory.ApiClient.PutAsync<Employee>(requestUrl, d);
+
         }
     }
 }

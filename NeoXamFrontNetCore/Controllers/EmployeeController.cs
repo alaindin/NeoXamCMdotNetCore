@@ -5,14 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using NeoXamFrontNetCore.Serivces;
+
+
 namespace NeoXamFrontNetCore.Controllers
 {
     public class EmployeeController : Controller
     {
+
+        private EmployeeService _empservice;
+        public EmployeeController(EmployeeService empservice)
+        {
+            this._empservice = empservice;
+
+        }
         // GET: Employee
         public ActionResult Index()
         {
-            return View();
+
+            var test = _empservice.GetAll().Result;
+            return View(test);
         }
 
         // GET: Employee/Details/5

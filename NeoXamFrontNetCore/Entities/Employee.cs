@@ -9,7 +9,7 @@ namespace NeoXamFrontNetCore.Entities
     public class Employee : User
     {
         [JsonProperty(PropertyName = "dateEmbauche")]
-        public DateTime DateEmbauche { get; set; }
+        public string DateEmbauche { get; set; }
         [JsonProperty(PropertyName = "poste")]
         public string Poste { get; set; }
         [JsonProperty(PropertyName = "numTel")]
