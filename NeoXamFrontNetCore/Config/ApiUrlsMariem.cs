@@ -7,7 +7,8 @@ namespace NeoXamFrontNetCore.Config
 {
     public static partial class ApiUrls
     {
-        
+        //Risk
+        public static string GetAllRisk = "risk/all";
  
 
     }
