@@ -1,5 +1,4 @@
-﻿@model NeoXamFrontNetCore.Entities.Departement
-
+﻿@model NeoXamFrontNetCore.Entities.Action
 @{
     ViewData["Title"] = "Create";
 }
@@ -8,7 +7,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Ajouter un département</h3>
+                <h3>Ajouter une Action</h3>
             </div>
 
 
@@ -31,9 +30,14 @@
                                 <span asp-validation-for="Code" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Libelle" class="control-label"></label>
-                                <input asp-for="Libelle" class="form-control" />
-                                <span asp-validation-for="Libelle" class="text-danger"></span>
+                                <label asp-for="Label" class="control-label"></label>
+                                <input asp-for="Label" class="form-control" />
+                                <span asp-validation-for="Label" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Date" class="control-label"></label>
+                                <input asp-for="Date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -1,4 +1,4 @@
-﻿@model NeoXamFrontNetCore.Entities.Departement
+﻿@model NeoXamFrontNetCore.Entities.Evaluation
 
 @{
     ViewData["Title"] = "Create";
@@ -8,7 +8,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Ajouter un département</h3>
+                <h3>Modifier Evaluation</h3>
             </div>
 
 
@@ -26,14 +26,24 @@
                         <form asp-action="Edit">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label asp-for="Code" class="control-label"></label>
-                                <input asp-for="Code" class="form-control" />
-                                <span asp-validation-for="Code" class="text-danger"></span>
+                                <label asp-for="Emp" class="control-label"></label>
+                                <input asp-for="Emp" class="form-control" />
+                                <span asp-validation-for="Emp" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Libelle" class="control-label"></label>
-                                <input asp-for="Libelle" class="form-control" />
-                                <span asp-validation-for="Libelle" class="text-danger"></span>
+                                <label asp-for="Risque" class="control-label"></label>
+                                <input asp-for="Risque" class="form-control" />
+                                <span asp-validation-for="Risque" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Date" class="control-label"></label>
+                                <input asp-for="Date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RisqueGlobal" class="control-label"></label>
+                                <input asp-for="RisqueGlobal" class="form-control" />
+                                <span asp-validation-for="RisqueGlobal" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Save" class="btn btn-primary" />

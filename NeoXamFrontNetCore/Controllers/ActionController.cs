@@ -20,7 +20,7 @@ namespace NeoXamFrontNetCore.Controllers
         // GET: Action
         public  async Task<ActionResult> Index()
         {
-            List<Action> actions = new List<Action>;
+            List<Entities.Action> actions = new List<Entities.Action>();
             actions = await _actionService.GetAll();
             return View(actions);
         }
