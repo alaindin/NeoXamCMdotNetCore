@@ -1,5 +1,6 @@
 ﻿using NeoXamFrontNetCore.Config;
 using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Infrasturcture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class RiskService
+    public class RiskService :IGenericCrud<Risk>
     {
         private readonly ApiClientFactory _apiClientFactory;
         public RiskService(ApiClientFactory apiClientFactory)
@@ -18,21 +19,21 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(Risk t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                  ApiUrls.AddRisk));
             return await _apiClientFactory.ApiClient.PostAsync<Risk>(requestUrl, t);
         }
 
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
+                  ApiUrls.DeleteRisk));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
         public async Task<Risk> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.GetDepartements));
+                   ApiUrls.FindRisk));
             return await _apiClientFactory.ApiClient.GetAsync<Risk>(requestUrl);
         }
 
@@ -46,7 +47,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Update(long id, Risk t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                     ApiUrls.GetDepartements));
+                     ApiUrls.UpdateRisk));
             return await _apiClientFactory.ApiClient.PutAsync<Risk>(requestUrl, t);
         }
     }

@@ -4,42 +4,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 using NeoXamFrontNetCore.Serivces;
-
 
 namespace NeoXamFrontNetCore.Controllers
 {
-    public class EmployeeController : Controller
+    public class EvaluationController : Controller
     {
 
-        private EmployeeService _empservice;
-        public EmployeeController(EmployeeService empservice)
-        {
-            this._empservice = empservice;
+        EvaluationService _evaluationService;
 
+        public EvaluationController(EvaluationService evaluationService)
+        {
+            _evaluationService = evaluationService;
         }
-        // GET: Employee
+
+        // GET: Evaluation
         public ActionResult Index()
         {
-
-            var test = _empservice.GetAll().Result;
-            return View(test);
+            return View();
         }
 
-        // GET: Employee/Details/5
+        // GET: Evaluation/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Employee/Create
+        // GET: Evaluation/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: Evaluation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -56,13 +53,13 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Employee/Edit/5
+        // GET: Evaluation/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Employee/Edit/5
+        // POST: Evaluation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -79,13 +76,13 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Employee/Delete/5
+        // GET: Evaluation/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Employee/Delete/5
+        // POST: Evaluation/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

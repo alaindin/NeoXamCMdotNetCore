@@ -1,36 +1,58 @@
-﻿using NeoXamFrontNetCore.Infrasturcture;
+﻿using NeoXamFrontNetCore.Config;
+using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Infrasturcture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class ActionService : IGenericCrud<Action>
+    public class ActionService : IGenericCrud<Entities.Action>
     {
-        public Task<bool> AddAsync(Action t)
+
+        private readonly ApiClientFactory _apiClientFactory;
+        public ActionService(ApiClientFactory apiClientFactory)
         {
-            throw new NotImplementedException();
+            _apiClientFactory = apiClientFactory;
+        }
+        public async Task<bool> AddAsync(Entities.Action t)
+        {
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.AddAction));
+            return await _apiClientFactory.ApiClient.PostAsync<Entities.Action>(requestUrl, t);
         }
 
-        public Task<bool> Delete(long id)
+
+        public async Task<bool> Delete(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.DeleteAction));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
-        public Task<Action> Get(long id)
+
+
+        public async Task<bool> Update(long id, Entities.Action t)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.UpdateAction));
+            return await _apiClientFactory.ApiClient.PutAsync<Entities.Action>(requestUrl, t);
         }
 
-        public Task<List<Action>> GetAll()
+       public async Task<Entities.Action> Get(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.DeleteAction));
+            return await _apiClientFactory.ApiClient.GetAsync<Entities.Action>(requestUrl);
         }
 
-        public Task<bool> Update(long id, Action t)
+       public  async Task<List<Entities.Action>> GetAll()
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.DeleteAction));
+            return await _apiClientFactory.ApiClient.GetAsync<List<Entities.Action>>(requestUrl);
         }
     }
 }

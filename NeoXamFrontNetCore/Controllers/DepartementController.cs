@@ -65,9 +65,11 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Departement/Edit/5
-        public ActionResult Edit(int id)
+        public async  Task<IActionResult> Edit(int id)
         {
-            return View();
+            List<Departement> departements = new List<Departement>();
+            departements = await _departementSerivce.GetAll();
+            return View(departements.FirstOrDefault(d=>d.Code==id) );
         }
 
         // POST: Departement/Edit/5
@@ -98,12 +100,12 @@ namespace NeoXamFrontNetCore.Controllers
    
         
     
-        public ActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
             try
             {
-                
-                // TODO: Add delete logic here
+
+                await _departementSerivce.Delete(id);
 
                 return RedirectToAction(nameof(Index));
             }

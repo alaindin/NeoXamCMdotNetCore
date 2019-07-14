@@ -36,6 +36,8 @@ namespace NeoXamFrontNetCore
             services.AddTransient<DepartementService>();
             services.AddTransient<RiskService>();
             services.AddTransient<EmployeeService>();
+            services.AddTransient<ActionService>();
+            services.AddTransient<EvaluationService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

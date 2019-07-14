@@ -16,19 +16,26 @@ namespace NeoXamFrontNetCore.Serivces
        
                 this._apiClientFactory= apiClientFactory;
         }
-        public Task<bool> AddAsync(Employee t)
+
+        public async Task<bool> AddAsync(Employee t)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.AddDepartement));
+            return await _apiClientFactory.ApiClient.PostAsync<Employee>(requestUrl, t);
         }
 
-        public Task<bool> Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.DeleteDepartement));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
-        public Task<Employee> Get(long id)
+        public async Task<Employee> Get(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<Employee>(requestUrl);
         }
 
         public async Task<List<Employee>> GetAll()
@@ -38,9 +45,13 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.GetAsync<List<Employee>>(requestUrl);
         }
 
-        public Task<bool> Update(long id, Employee t)
+
+        public async Task<bool> Update(long id, Employee d)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                     ApiUrls.UpdateDepartement + id));
+            return await _apiClientFactory.ApiClient.PutAsync<Employee>(requestUrl, d);
+
         }
     }
 }

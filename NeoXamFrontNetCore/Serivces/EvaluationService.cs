@@ -8,47 +8,46 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public partial class DepartementService : IGenericCrud<Departement>
+    public class EvaluationService : IGenericCrud<Evaluation>
     {
         private readonly ApiClientFactory _apiClientFactory;
-        public DepartementService(ApiClientFactory apiClientFactory)
+        public EvaluationService(ApiClientFactory apiClientFactory)
         {
             _apiClientFactory = apiClientFactory;
         }
-
-        public async Task<bool> AddAsync(Departement t)
+        public async Task<bool> AddAsync(Evaluation t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.AddDepartement));
-            return await _apiClientFactory.ApiClient.PostAsync<Departement>(requestUrl,t);
+                   ApiUrls.AddEvaluation));
+            return await _apiClientFactory.ApiClient.PostAsync<Evaluation>(requestUrl, t);
         }
 
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteDepartement));
-            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl,id);
+                   ApiUrls.DeleteEvaluation));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
-        public  async Task<Departement> Get(long id)
+        public async Task<Evaluation> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.GetDepartements));
-            return await _apiClientFactory.ApiClient.GetAsync<Departement>(requestUrl);
+                  ApiUrls.FindEvaluation));
+            return await _apiClientFactory.ApiClient.GetAsync<Evaluation>(requestUrl);
         }
 
-        public async Task<List<Departement>> GetAll()
+        public async Task<List<Evaluation>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.GetDepartements));
-            return await _apiClientFactory.ApiClient.GetAsync<List<Departement>>(requestUrl);
+                   ApiUrls.GetAllEvaluation));
+            return await _apiClientFactory.ApiClient.GetAsync<List<Evaluation>>(requestUrl);
         }
 
-        public async Task<bool> Update(long id, Departement d)
+        public async Task<bool> Update(long id, Evaluation t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                     ApiUrls.UpdateDepartement+id));
-            return await _apiClientFactory.ApiClient.PutAsync<Departement>(requestUrl, d);
+                  ApiUrls.UpdateEvaluation));
+            return await _apiClientFactory.ApiClient.PutAsync<Evaluation>(requestUrl, t);
         }
     }
 }
