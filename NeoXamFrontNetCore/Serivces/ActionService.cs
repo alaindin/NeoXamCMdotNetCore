@@ -1,34 +1,50 @@
-﻿using NeoXamFrontNetCore.Infrasturcture;
+﻿using NeoXamFrontNetCore.Config;
+using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Infrasturcture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ac = NeoXamFrontNetCore.Entities.Action;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class ActionService : IGenericCrud<Action>
+    public class ActionService : IGenericCrud<ac>
     {
-        public Task<bool> AddAsync(Action t)
+
+        private readonly ApiClientFactory _apiClientFactory;
+        public ActionService(ApiClientFactory apiClientFactory)
+        {
+            _apiClientFactory = apiClientFactory;
+        }
+        public async Task<bool> AddAsync(ac t)
+        {
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.GetAllAction));
+            return await _apiClientFactory.ApiClient.PostAsync<ac>(requestUrl, t);
+        }
+
+
+        public async Task<bool> Delete(long id)
+        {
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
+        }
+
+
+
+        public async Task<bool> Update(long id, ac t)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(long id)
+        Task<ac> IGenericCrud<ac>.Get(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Action> Get(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Action>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(long id, Action t)
+        Task<List<ac>> IGenericCrud<ac>.GetAll()
         {
             throw new NotImplementedException();
         }

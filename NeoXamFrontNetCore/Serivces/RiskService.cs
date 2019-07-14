@@ -1,5 +1,6 @@
 ﻿using NeoXamFrontNetCore.Config;
 using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Infrasturcture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class RiskService
+    public class RiskService :IGenericCrud<Risk>
     {
         private readonly ApiClientFactory _apiClientFactory;
         public RiskService(ApiClientFactory apiClientFactory)
