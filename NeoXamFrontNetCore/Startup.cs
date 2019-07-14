@@ -35,6 +35,7 @@ namespace NeoXamFrontNetCore
             services.AddSingleton<ApiClientFactory>();
             services.AddTransient<DepartementService>();
             services.AddTransient<RiskService>();
+            services.AddTransient<EmployeeService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

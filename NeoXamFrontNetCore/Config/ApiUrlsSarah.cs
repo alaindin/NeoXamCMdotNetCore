@@ -7,8 +7,14 @@ namespace NeoXamFrontNetCore.Config
 {
     public static partial class ApiUrls
     {
-        
- 
+       
+
+        // Employee 
+        public static string AddEmp = "";
+        public static string UpdateEmp = "";
+        public static string GetEmps = "employee/all";
+        public static string DeleteEmp= "";
+
 
     }
 }
