@@ -35,17 +35,26 @@ namespace NeoXamFrontNetCore.Controllers
         // GET: Departement/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
         // POST: Departement/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(Departement departement)
         {
             try
             {
-                // TODO: Add insert logic here
+               if (departement != null && !string.IsNullOrEmpty( departement.Libelle))
+                {
+                   
+                   await _departementSerivce.AddAsync(departement);
+                }
+                else
+                {
+                    return View();
+                }
 
                 return RedirectToAction(nameof(Index));
             }
@@ -64,10 +73,18 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Departement/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Departement departement)
         {
             try
             {
+                if (departement != null)
+                {
+                    await _departementSerivce.Update(id, departement);
+                }
+                else
+                {
+                    return View();
+                }
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
@@ -78,19 +95,14 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Departement/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Departement/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+   
+        
+    
+        public ActionResult Delete(long id)
         {
             try
             {
+                
                 // TODO: Add delete logic here
 
                 return RedirectToAction(nameof(Index));

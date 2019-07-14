@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Config
 {
-    public static class ApiUrls
+    public static partial class ApiUrls
     {
         public static string serverRootPath = "http://127.0.0.1:8080/NeoXamHR-web/api/";
 
@@ -14,6 +14,7 @@ namespace NeoXamFrontNetCore.Config
         public static string UpdateDepartement =  "";
         public static string GetDepartements = "departement/all";
         public static string DeleteDepartement = "";
+        // User 
 
 
     }

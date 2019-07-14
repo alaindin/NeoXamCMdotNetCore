@@ -15,31 +15,40 @@ namespace NeoXamFrontNetCore.Serivces
         {
             _apiClientFactory = apiClientFactory;
         }
-        public async Task AddAsync(Departement t)
+
+        public async Task<bool> AddAsync(Departement t)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.PostAsync<Departement>(requestUrl,t);
         }
 
-        public async Task Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                  ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl,id);
         }
 
-        public async Task<Departement> FindById(long id)
+        public  async Task<Departement> Get(long id)
         {
-            throw new NotImplementedException();
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                   ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<Departement>(requestUrl);
         }
 
         public async Task<List<Departement>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                ApiUrls.GetDepartements));
+                  ApiUrls.GetDepartements));
             return await _apiClientFactory.ApiClient.GetAsync<List<Departement>>(requestUrl);
         }
 
-        public async Task Update(long id, Departement t)
+        public async Task<bool> Update(long id, Departement t)
         {
-           //
+            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                     ApiUrls.GetDepartements ));
+            return await _apiClientFactory.ApiClient.PutAsync<Departement>(requestUrl, t);
         }
     }
 }
