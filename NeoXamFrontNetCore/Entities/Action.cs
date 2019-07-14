@@ -11,7 +11,7 @@ namespace NeoXamFrontNetCore.Entities
         [JsonProperty(PropertyName = "code")]
         public long Code { get; set; }
         [JsonProperty(PropertyName = "date")]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         [JsonProperty(PropertyName = "Label")]
         public string Label { get; set; }
         [JsonProperty(PropertyName = "risquesP")]
