@@ -6,53 +6,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class ActionService : IGenericCrud<Entities.Action>
+    public class EmployeeService : IGenericCrud<Employee>
     {
-
         private readonly ApiClientFactory _apiClientFactory;
-        public ActionService(ApiClientFactory apiClientFactory)
+        public EmployeeService(ApiClientFactory apiClientFactory)
         {
             _apiClientFactory = apiClientFactory;
         }
-        public async Task<bool> AddAsync(Entities.Action t)
+
+        public async Task<bool> AddAsync(Employee t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.AddAction));
-            return await _apiClientFactory.ApiClient.PostAsync<Entities.Action>(requestUrl, t);
+                  ApiUrls.AddDepartement));
+            return await _apiClientFactory.ApiClient.PostAsync<Employee>(requestUrl, t);
         }
-
 
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteAction));
+                  ApiUrls.DeleteDepartement));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
-
-
-        public async Task<bool> Update(long id, Entities.Action t)
+        public async Task<Employee> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.UpdateAction));
-            return await _apiClientFactory.ApiClient.PutAsync<Entities.Action>(requestUrl, t);
+                   ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<Employee>(requestUrl);
         }
 
-        async Task<Entities.Action> IGenericCrud<Entities.Action>.Get(long id)
+        public async Task<List<Employee>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<Entities.Action>(requestUrl);
+                  ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<List<Employee>>(requestUrl);
         }
 
-        async Task<List<Entities.Action>> IGenericCrud<Entities.Action>.GetAll()
+        public async Task<bool> Update(long id, Employee d)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<List<Entities.Action>>(requestUrl);
+                     ApiUrls.UpdateDepartement + id));
+            return await _apiClientFactory.ApiClient.PutAsync<Employee>(requestUrl, d);
         }
     }
 }
