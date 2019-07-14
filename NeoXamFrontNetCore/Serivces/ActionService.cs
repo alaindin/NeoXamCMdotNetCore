@@ -48,7 +48,7 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.GetAsync<Entities.Action>(requestUrl);
         }
 
-      public  async Task<List<Entities.Action>> GetAll()
+       public  async Task<List<Entities.Action>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.DeleteAction));
