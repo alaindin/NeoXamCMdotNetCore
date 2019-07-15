@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using NeoXamFrontNetCore.Entities;
 using NeoXamFrontNetCore.Serivces;
 
 
@@ -28,9 +28,10 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Employee/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var emp =await _empservice.Get(id);
+            return View(emp);
         }
 
         // GET: Employee/Create
@@ -42,11 +43,19 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Employee/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(Employee emp)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (emp != null)
+                {
+
+                    await _empservice.AddAsync(emp);
+                }
+                else
+                {
+                    return View();
+                }
 
                 return RedirectToAction(nameof(Index));
             }
@@ -65,10 +74,18 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Employee/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Employee emp)
         {
             try
             {
+                if (emp != null)
+                {
+                    await _empservice.Update(id, emp);
+                }
+                else
+                {
+                    return View();
+                }
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
@@ -80,19 +97,12 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Employee/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Employee/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(long id)
         {
             try
             {
-                // TODO: Add delete logic here
+
+                await _empservice.Delete(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -101,5 +111,7 @@ namespace NeoXamFrontNetCore.Controllers
                 return View();
             }
         }
+
+
     }
 }

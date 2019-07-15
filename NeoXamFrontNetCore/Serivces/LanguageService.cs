@@ -6,60 +6,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class UserService : IGenericCrud<User>
-    {
 
+    public class LanguageService : IGenericCrud<Language>
+    {
         private readonly ApiClientFactory _apiClientFactory;
-        public UserService(ApiClientFactory apiClientFactory)
+        public LanguageService(ApiClientFactory apiClientFactory)
         {
             _apiClientFactory = apiClientFactory;
         }
-        public async Task<bool> AddAsync(User t)
+
+        public async Task<bool> AddAsync(Language t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.AddAction));
-            return await _apiClientFactory.ApiClient.PostAsync<User>(requestUrl, t);
+                  ApiUrls.AddDepartement));
+            return await _apiClientFactory.ApiClient.PostAsync<Language>(requestUrl, t);
         }
-
 
         public async Task<bool> Delete(long id)
         {
+
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteAction));
+                  ApiUrls.DeleteDepartement));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
-
-
-        public async Task<bool> Update(long id, User t)
+        public async Task<Language> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.UpdateAction));
-            return await _apiClientFactory.ApiClient.PutAsync<User>(requestUrl, t);
+                   ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<Language>(requestUrl);
         }
 
-       public async Task<User> Get(long id)
+        public async Task<List<Language>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<User>(requestUrl);
+                  ApiUrls.GetDepartements));
+            return await _apiClientFactory.ApiClient.GetAsync<List<Language>>(requestUrl);
         }
 
-       public  async Task<List<User>> GetAll()
+        public async Task<bool> Update(long id, Language d)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<List<User>>(requestUrl);
+                     ApiUrls.UpdateDepartement + id));
+            return await _apiClientFactory.ApiClient.PutAsync<Language>(requestUrl, d);
         }
 
-        public async Task<User> Login(string login, string password)
-        {
-            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction + login +"/" +password));
-            return await _apiClientFactory.ApiClient.GetAsync<User>(requestUrl);
-        }
+        
     }
 }

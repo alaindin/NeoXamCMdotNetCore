@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class UserService : IGenericCrud<User>
+    public class ProjectService : IGenericCrud<Project>
     {
 
         private readonly ApiClientFactory _apiClientFactory;
-        public UserService(ApiClientFactory apiClientFactory)
+        public ProjectService(ApiClientFactory apiClientFactory)
         {
             _apiClientFactory = apiClientFactory;
         }
-        public async Task<bool> AddAsync(User t)
+        public async Task<bool> AddAsync(Project t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.AddAction));
-            return await _apiClientFactory.ApiClient.PostAsync<User>(requestUrl, t);
+            return await _apiClientFactory.ApiClient.PostAsync<Project>(requestUrl, t);
         }
 
 
@@ -34,32 +34,25 @@ namespace NeoXamFrontNetCore.Serivces
 
 
 
-        public async Task<bool> Update(long id, User t)
+        public async Task<bool> Update(long id, Project t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                   ApiUrls.UpdateAction));
-            return await _apiClientFactory.ApiClient.PutAsync<User>(requestUrl, t);
+            return await _apiClientFactory.ApiClient.PutAsync<Project>(requestUrl, t);
         }
 
-       public async Task<User> Get(long id)
+       public async Task<Project> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<User>(requestUrl);
+            return await _apiClientFactory.ApiClient.GetAsync<Project>(requestUrl);
         }
 
-       public  async Task<List<User>> GetAll()
+       public  async Task<List<Project>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.DeleteAction));
-            return await _apiClientFactory.ApiClient.GetAsync<List<User>>(requestUrl);
-        }
-
-        public async Task<User> Login(string login, string password)
-        {
-            var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction + login +"/" +password));
-            return await _apiClientFactory.ApiClient.GetAsync<User>(requestUrl);
+            return await _apiClientFactory.ApiClient.GetAsync<List<Project>>(requestUrl);
         }
     }
 }
