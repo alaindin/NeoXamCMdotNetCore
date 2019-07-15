@@ -33,6 +33,7 @@ namespace NeoXamFrontNetCore
             });
 
             services.AddSingleton<ApiClientFactory>();
+
             services.AddTransient<DepartementService>();
             services.AddTransient<RiskService>();
             services.AddTransient<EmployeeService>();
@@ -42,6 +43,7 @@ namespace NeoXamFrontNetCore
             services.AddTransient<DiplomaService>();
             services.AddTransient<ExperienceService>();
             services.AddTransient<TrainingService>();
+            services.AddTransient<LanguageService>();
 
 
 

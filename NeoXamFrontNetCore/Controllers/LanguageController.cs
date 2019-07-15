@@ -4,15 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Config;
+using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Infrasturcture;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
 {
     public class LanguageController : Controller
     {
-        // GET: Language
-        public ActionResult Index()
+        private LanguageService _metier;
+
+        public LanguageController(LanguageService metier)
         {
-            return View();
+            _metier = metier;
+        }
+        
+        // GET: Language
+        public async Task<IActionResult> Index()
+        {
+            var l = _metier.GetAll();
+            return View(l);
         }
 
         // GET: Language/Details/5

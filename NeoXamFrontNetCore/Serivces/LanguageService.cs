@@ -20,7 +20,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(Language t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.AddDepartement));
+                  ApiUrls.AddLanguage));
             return await _apiClientFactory.ApiClient.PostAsync<Language>(requestUrl, t);
         }
 
@@ -28,7 +28,7 @@ namespace NeoXamFrontNetCore.Serivces
         {
 
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteDepartement));
+                  ApiUrls.DeleteLanguage + id));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
