@@ -13,10 +13,12 @@ namespace NeoXamFrontNetCore.Controllers
     {
 
         EvaluationService _evaluationService;
+        EmployeeService _employeeService;
 
-        public EvaluationController(EvaluationService evaluationService)
+        public EvaluationController(EvaluationService evaluationService, EmployeeService employeeService)
         {
             _evaluationService = evaluationService;
+            _employeeService = employeeService;
         }
 
         // GET: Evaluation
@@ -24,7 +26,14 @@ namespace NeoXamFrontNetCore.Controllers
         {
             List<Evaluation> evaluations = new List<Evaluation>();
             evaluations = await _evaluationService.GetAll();
+            List<Evaluation> eval1 = new List<Evaluation>();
+            foreach
+                (var v in evaluations) {
+                var e = new Evaluation() ;
+                e = v;
+                e.employee = await _employeeService.Get(v.Id.EmpId);
 
+            }
             return View(evaluations);
         }
 
