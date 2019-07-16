@@ -41,11 +41,12 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Action/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(Entities.Action action)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (action != null && !string.IsNullOrEmpty(action.Label))
+                    await _actionService.AddAsync(action);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -65,13 +66,13 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Action/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Entities.Action action)
         {
             try
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Index));
+              await  _actionService.Update(id,action);
+               return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -80,26 +81,13 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Action/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+           await _actionService.Delete(id);
+
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: Action/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+     
     }
 }
