@@ -18,12 +18,9 @@ namespace NeoXamFrontNetCore.Controllers
         {
            
         }
-        public async Task<IActionResult> Index()
+        public  ActionResult Index()
         {
-           // var deps = _service.GetAll();
-            
-
-            string alaa = "ok";
+         
 
             return View();
         }
