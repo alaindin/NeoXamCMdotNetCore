@@ -58,7 +58,8 @@ namespace NeoXamFrontNetCore.Controllers
         // GET: Action/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var action = _actionService.Get(id).Result;
+            return View(action);
         }
 
         // POST: Action/Edit/5

@@ -20,21 +20,21 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(Employee t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.AddDepartement));
+                  ApiUrls.AddEmp));
             return await _apiClientFactory.ApiClient.PostAsync<Employee>(requestUrl, t);
         }
 
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteDepartement));
+                  ApiUrls.DeleteEmp));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
         public async Task<Employee> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.GetDepartements));
+                   ApiUrls.GetEmployeById+id));
             return await _apiClientFactory.ApiClient.GetAsync<Employee>(requestUrl);
         }
 

@@ -18,5 +18,6 @@ namespace NeoXamFrontNetCore.Entities
         public DateTime Date { get; set; }
         [JsonProperty(PropertyName = "risqueGlobal")]
         public int RisqueGlobal { get; set; }
+        public Employee employee { get; set; }
     }
 }

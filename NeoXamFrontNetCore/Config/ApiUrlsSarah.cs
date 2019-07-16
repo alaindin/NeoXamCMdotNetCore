@@ -14,6 +14,7 @@ namespace NeoXamFrontNetCore.Config
         public static string UpdateEmp = "";
         public static string GetEmps = "employee/all";
         public static string DeleteEmp= "";
+        public static string GetEmployeById = "employee/find/";
 
 
     }
