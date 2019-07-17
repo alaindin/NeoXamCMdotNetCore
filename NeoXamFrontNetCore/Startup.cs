@@ -49,6 +49,14 @@ namespace NeoXamFrontNetCore
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "NeoXam.Session";
+                options.IdleTimeout = TimeSpan.FromMinutes(240);//You can set Time
+
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +73,7 @@ namespace NeoXamFrontNetCore
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

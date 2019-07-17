@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoXamFrontNetCore", "NeoXamFrontNetCore\NeoXamFrontNetCore.csproj", "{7DDE2B33-68FD-48FF-89F7-ADA32B401C40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoXamFrontNetCore", "NeoXamFrontNetCore\NeoXamFrontNetCore.csproj", "{7DDE2B33-68FD-48FF-89F7-ADA32B401C40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoXamFrontNetCore.Domain", "NeoXamFrontNetCore.Domain\NeoXamFrontNetCore.Domain.csproj", "{DD796ED3-0F46-42E0-A8E9-2A30D3EBECA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoXamFrontNetCore.Services", "NeoXamFrontNetCore.Services\NeoXamFrontNetCore.Services.csproj", "{D5466BA1-8881-4698-A7D1-3BCD9D599CBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoXamFrontNetCore.Infrastructure", "NeoXamFrontNetCore.Infrastructure\NeoXamFrontNetCore.Infrastructure.csproj", "{D3C9C3B5-1A52-4500-B2F0-676241E80321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{7DDE2B33-68FD-48FF-89F7-ADA32B401C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DDE2B33-68FD-48FF-89F7-ADA32B401C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DDE2B33-68FD-48FF-89F7-ADA32B401C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD796ED3-0F46-42E0-A8E9-2A30D3EBECA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD796ED3-0F46-42E0-A8E9-2A30D3EBECA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD796ED3-0F46-42E0-A8E9-2A30D3EBECA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD796ED3-0F46-42E0-A8E9-2A30D3EBECA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5466BA1-8881-4698-A7D1-3BCD9D599CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5466BA1-8881-4698-A7D1-3BCD9D599CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5466BA1-8881-4698-A7D1-3BCD9D599CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5466BA1-8881-4698-A7D1-3BCD9D599CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C9C3B5-1A52-4500-B2F0-676241E80321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C9C3B5-1A52-4500-B2F0-676241E80321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C9C3B5-1A52-4500-B2F0-676241E80321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C9C3B5-1A52-4500-B2F0-676241E80321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

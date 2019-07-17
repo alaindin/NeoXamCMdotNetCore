@@ -12,6 +12,8 @@ namespace NeoXamFrontNetCore.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
         private UserService _userService;
         public UserController(UserService userService)
         {
@@ -38,10 +40,12 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
+                user.IsCompleted = false;
+                user.Role = "Utilisateur";
                 // TODO: Add insert logic here
 
                 return RedirectToAction(nameof(Index));
@@ -61,7 +65,7 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, User user)
         {
             try
             {
@@ -81,22 +85,7 @@ namespace NeoXamFrontNetCore.Controllers
             return View();
         }
 
-        // POST: User/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
         public async Task<IActionResult> Login()
         {
             return View();
