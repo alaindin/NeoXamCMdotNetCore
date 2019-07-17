@@ -22,11 +22,16 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.PostAsync<Evaluation>(requestUrl, t);
         }
 
-        public async Task<bool> Delete(long id)
+        public async Task<bool> Delete(long id,long id2)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteEvaluation));
-            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
+                   ApiUrls.DeleteEvaluation+id +"/"));
+            return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id2);
+        }
+
+        public Task<bool> Delete(long id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Evaluation> Get(long id)
