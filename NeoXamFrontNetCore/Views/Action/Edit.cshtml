@@ -8,7 +8,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Ajouter un risque</h3>
+                <h3>Modifier action</h3>
             </div>
 
 
@@ -23,7 +23,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form asp-action="Edit">
+                        <form asp-action="Edit" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Code" class="control-label"></label>

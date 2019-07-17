@@ -15,10 +15,10 @@
 
         <div class="clearfix"></div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
+                        <h2>  <a asp-action="Create" asp-controller="Evaluation" class="btn btn-dark bg-green"> Nouveau</a></h2>
                        
                         <div class="clearfix"></div>
                     </div>
@@ -26,11 +26,11 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Code Employé</th>
+                                    <th> Employé</th>
                                     <th>Code Risque</th>
-                                    <th>Date de l'évaluation</th>
-                                    <th>Valeur de l'évaluation</th>
-
+                                   
+                                    <th>Valeur de l'évaluation(%)</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,16 +38,19 @@
                                 {
                                 <tr>
                                     <td>
-                                        @eval.employee.Prenom
+                                        @eval.employee.Nom
+
                                     </td>
                                     <td>
-                                        @eval.Risque?.Description
+                                        @eval.Id.RisqueId
                                     </td>
-                                    <td>
-                                        @eval.Date
-                                    </td>
+                                    
                                     <td>
                                         @eval.RisqueGlobal
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-controller="Evaluation" asp-route-id="@eval.Id.RisqueId" class="btn btn-warning"> Modifier</a>
+                                        <a asp-action="Delete" asp-controller="Evaluation" asp-route-id="@eval.Id.RisqueId" class="btn btn-danger"> Supprimer</a>
                                     </td>
                                 </tr>
                                 }

@@ -19,5 +19,7 @@ namespace NeoXamFrontNetCore.Entities
         [JsonProperty(PropertyName = "risqueGlobal")]
         public int RisqueGlobal { get; set; }
         public Employee employee { get; set; }
+
+        public Risk risk { get; set; }
     }
 }

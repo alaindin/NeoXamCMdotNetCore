@@ -15,10 +15,10 @@
 
         <div class="clearfix"></div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
+                        <h2> <a asp-action="Create" asp-controller="Risk" class="btn btn-dark bg-green"> Nouveau</a></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -49,7 +49,7 @@
                                     <th>Fait</th>
                                     <th>Action Préventive</th>
                                     <th>Action Consécutive</th>
-
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +70,10 @@
                                     </td>
                                     <td>
                                         @risk.ActionConsecutive?.Label
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-controller="Risk" asp-route-id="@risk.Code" class="btn btn-warning"> Modifier</a>
+                                        <a asp-action="Delete" asp-controller="Risk" asp-route-id="@risk.Code" class="btn btn-danger"> Supprimer</a>
                                     </td>
                                 </tr>
                                 }
