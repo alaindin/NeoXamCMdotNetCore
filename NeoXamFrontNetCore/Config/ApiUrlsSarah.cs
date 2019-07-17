@@ -10,10 +10,10 @@ namespace NeoXamFrontNetCore.Config
        
 
         // Employee 
-        public static string AddEmp = "";
-        public static string UpdateEmp = "";
+        public static string AddEmp = "employee/add";
+        public static string UpdateEmp = "employee/update/";
         public static string GetEmps = "employee/all";
-        public static string DeleteEmp= "";
+        public static string DeleteEmp= "employee/delete/";
         public static string GetEmployeById = "employee/find/";
 
         //Projet

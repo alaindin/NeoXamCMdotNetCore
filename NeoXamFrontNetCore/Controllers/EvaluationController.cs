@@ -52,12 +52,12 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Evaluation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Evaluation evaluation)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                if (evaluation != null)
+                { await _evaluationService.AddAsync(evaluation); }
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,11 +75,14 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Evaluation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, Evaluation evaluation)
         {
             try
             {
-                // TODO: Add update logic here
+                if (evaluation != null)
+                {
+                    await _evaluationService.Update(id, evaluation);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
