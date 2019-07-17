@@ -8,7 +8,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Ajouter un risque</h3>
+                <h3>Modifier risque</h3>
             </div>
 
 
@@ -19,7 +19,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>                        
+                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -41,24 +41,17 @@
                                 <span asp-validation-for="Fait" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="ActionPreventive" class="control-label"></label>
-                                <input asp-for="ActionPreventive" class="form-control" />
-                                <span asp-validation-for="ActionPreventive" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ActionConsecutive" class="control-label"></label>
-                                <input asp-for="ActionConsecutive" class="form-control" />
-                                <span asp-validation-for="ActionConsecutive" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-primary" />
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
 
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
-
