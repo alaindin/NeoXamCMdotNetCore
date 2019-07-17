@@ -15,8 +15,8 @@ namespace NeoXamFrontNetCore.Entities
         [JsonProperty(PropertyName = "fait")]
         public string Fait { get; set; }
         [JsonProperty(PropertyName = "actionPreventive")]
-        public Action ActionPreventive { get; set; }
+        public ActionModel ActionPreventive { get; set; }
         [JsonProperty(PropertyName = "actionConsecutive")]
-        public Action ActionConsecutive { get; set; }
+        public ActionModel ActionConsecutive { get; set; }
     }
 }

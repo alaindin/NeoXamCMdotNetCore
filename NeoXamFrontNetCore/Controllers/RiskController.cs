@@ -45,7 +45,7 @@ namespace NeoXamFrontNetCore.Controllers
         {
             try
             {
-                if(risk !=null && string.IsNullOrEmpty(risk.Description)){
+                if(risk !=null ){
                     await _riskService.AddAsync(risk);
 
                     
@@ -98,11 +98,11 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Risk/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                await _riskService.Delete(id);
 
                 return RedirectToAction(nameof(Index));
             }
