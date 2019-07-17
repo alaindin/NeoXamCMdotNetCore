@@ -20,7 +20,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> AddAsync(Project t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.AddAction));
+                   ApiUrls.AddProj));
             return await _apiClientFactory.ApiClient.PostAsync<Project>(requestUrl, t);
         }
 
@@ -28,7 +28,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Delete(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.DeleteAction));
+                  ApiUrls.DeleteProj));
             return await _apiClientFactory.ApiClient.DeleteAsync(requestUrl, id);
         }
 
@@ -37,21 +37,21 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Update(long id, Project t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.UpdateAction));
+                  ApiUrls.UpdateProj+id));
             return await _apiClientFactory.ApiClient.PutAsync<Project>(requestUrl, t);
         }
 
        public async Task<Project> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
+                   ApiUrls.GetProjById+id));
             return await _apiClientFactory.ApiClient.GetAsync<Project>(requestUrl);
         }
 
        public  async Task<List<Project>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.DeleteAction));
+                   ApiUrls.GetAllProj));
             return await _apiClientFactory.ApiClient.GetAsync<List<Project>>(requestUrl);
         }
     }

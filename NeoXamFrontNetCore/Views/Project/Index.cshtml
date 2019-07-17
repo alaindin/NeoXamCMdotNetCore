@@ -1,0 +1,85 @@
+﻿@model IEnumerable<NeoXamFrontNetCore.Entities.Project>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Liste des projets</h3>
+            </div>
+
+
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Département <small>Liste complète</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <p>
+                            <a asp-action="Create">Create New</a>
+                        </p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateDeb)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateFin)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Avancement)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Designation)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateDeb)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateFin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Avancement)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Designation)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new {  id = item.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -44,6 +44,7 @@ namespace NeoXamFrontNetCore
             services.AddTransient<ExperienceService>();
             services.AddTransient<TrainingService>();
             services.AddTransient<LanguageService>();
+            services.AddTransient<ProjectService>();
 
 
 
