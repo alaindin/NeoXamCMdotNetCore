@@ -1,4 +1,4 @@
-﻿@model List<NeoXamFrontNetCore.Entities.Action>
+﻿@model List<NeoXamFrontNetCore.Entities.ActionModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Liste des départements</h3>
+                <h3>Liste des actions</h3>
             </div>
 
 
@@ -18,7 +18,10 @@
             <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
+                        <h2>
+                           
+                            <a asp-action="Create" asp-controller="Action"  class="btn btn-dark bg-green" > Nouveau</a>
+                        </h2>
                  
                         <div class="clearfix"></div>
                     </div>

@@ -34,11 +34,16 @@ namespace NeoXamFrontNetCore.Serivces
             throw new NotImplementedException();
         }
 
-        public async Task<Evaluation> Get(long id)
+        public async Task<Evaluation> Get(long id, long id2)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.FindEvaluation));
+                  ApiUrls.FindEvaluation + id + "/"));
             return await _apiClientFactory.ApiClient.GetAsync<Evaluation>(requestUrl);
+        }
+
+        public Task<Evaluation> Get(long id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<Evaluation>> GetAll()
@@ -48,11 +53,16 @@ namespace NeoXamFrontNetCore.Serivces
             return await _apiClientFactory.ApiClient.GetAsync<List<Evaluation>>(requestUrl);
         }
 
-        public async Task<bool> Update(long id, Evaluation t)
+        public async Task<bool> Update(long id, long id2, Evaluation t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.UpdateEvaluation));
+                  ApiUrls.UpdateEvaluation + id + "/"));
             return await _apiClientFactory.ApiClient.PutAsync<Evaluation>(requestUrl, t);
+        }
+
+        public Task<bool> Update(long id, Evaluation t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

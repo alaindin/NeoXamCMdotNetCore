@@ -1,0 +1,70 @@
+﻿@model NeoXamFrontNetCore.Entities.Project
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Ajouter un Projet</h3>
+            </div>
+
+
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Boardered table <small>Bordered table subtitle</small></h2>                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Id)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Id)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.DateDeb)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.DateDeb)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.DateFin)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.DateFin)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Avancement)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Avancement)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Designation)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Designation)
+                            </dd>
+                        </dl>
+
+                        <form asp-action="Delete">
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            <a asp-action="Index">Back to List</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

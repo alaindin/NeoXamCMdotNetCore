@@ -1,0 +1,156 @@
+﻿@model NeoXamFrontNetCore.Entities.User
+
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form asp-action="Login">
+                        <h1>Login Form</h1>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input type="submit" asp-action="Login" asp-controller="User" class="btn btn-default submit" value="Login"/>
+                           
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                New to neoXam?
+                                <a href="#signup" class="to_register"> Create Account </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form>
+                        <h1>Create Account</h1>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Id" class="control-label"></label>
+                            <input asp-for="Id" class="form-control" />
+                            <span asp-validation-for="Id" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Nom" class="control-label"></label>
+                            <input asp-for="Nom" class="form-control" />
+                            <span asp-validation-for="Nom" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Photo" class="control-label"></label>
+                            <input asp-for="Photo" class="form-control" />
+                            <span asp-validation-for="Photo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Prenom" class="control-label"></label>
+                            <input asp-for="Prenom" class="form-control" />
+                            <span asp-validation-for="Prenom" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterDate" class="control-label"></label>
+                            <input asp-for="RegisterDate" class="form-control" />
+                            <span asp-validation-for="RegisterDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Role" class="control-label"></label>
+                            <input asp-for="Role" class="form-control" />
+                            <span asp-validation-for="Role" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input class="btn btn-default submit" href="index.html" />
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Already a member ?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> NeoXamHR Management</h1>
+                                <p>©2016 All Rights Reserved. NeoXamGroup. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+</body>
+</html>
+
+
+
+

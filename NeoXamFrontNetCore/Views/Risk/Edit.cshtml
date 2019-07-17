@@ -1,13 +1,13 @@
 ﻿@model NeoXamFrontNetCore.Entities.Risk
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Modiifer Risque</h3>
+                <h3>Modifier risk</h3>
             </div>
 
 
@@ -40,24 +40,17 @@
                                 <span asp-validation-for="Fait" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="ActionConsecutive" class="control-label"></label>
-                                <input asp-for="ActionConsecutive" class="form-control" />
-                                <span asp-validation-for="ActionConsecutive" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ActionPreventive" class="control-label"></label>
-                                <input asp-for="ActionPreventive" class="form-control" />
-                                <span asp-validation-for="ActionPreventive" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
                                 <input type="submit" value="Save" class="btn btn-primary" />
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
 
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
-

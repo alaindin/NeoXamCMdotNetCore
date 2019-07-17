@@ -4,21 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeoXamFrontNetCore.Entities;
+using NeoXamFrontNetCore.Serivces;
 
 namespace NeoXamFrontNetCore.Controllers
 {
     public class ProjectController : Controller
     {
-        // GET: Project
-        public ActionResult Index()
+        ProjectService _projectService;
+        public ProjectController(ProjectService projectService)
         {
-            return View();
+            _projectService = projectService;
+
+        }
+        // GET: Project
+        public async Task<ActionResult> Index()
+        {
+            List<Project> projs = new List<Project>();
+            projs = await _projectService.GetAll();
+            return View(projs);
         }
 
-        // GET: Project/Details/5
-        public ActionResult Details(int id)
+        // GET: Project/Details/{id}
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            Project projet = await _projectService.Get(id);
+            return View(projet);
+                
         }
 
         // GET: Project/Create
@@ -30,11 +42,19 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Project/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Project projet)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (projet != null)
+                {
+
+                    await _projectService.AddAsync(projet);
+                }
+                else
+                {
+                    return View();
+                }
 
                 return RedirectToAction(nameof(Index));
             }
@@ -44,19 +64,29 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Project/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Project/Edit/{id}
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            List<Project> projs = new List<Project>();
+            projs = await _projectService.GetAll();
+            return View(projs.FirstOrDefault(d => d.Id == id));
         }
 
-        // POST: Project/Edit/5
+        // POST: Project/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, Project projet)
         {
             try
             {
+                if (projet != null)
+                {
+                    await _projectService.Update(id, projet);
+                }
+                else
+                {
+                    return View();
+                }
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
@@ -67,20 +97,24 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Project/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Project/Delete/{id}
+        public async Task<ActionResult> Delete(long id)
         {
-            return View();
+            
+            Project proj = await _projectService.Get(id);
+            return View(proj);
         }
 
-        // POST: Project/Delete/5
+        // POST: Project/Delete/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(long id, Project projet)
         {
             try
             {
-                // TODO: Add delete logic here
+
+                await _projectService.Delete(id);
+
 
                 return RedirectToAction(nameof(Index));
             }

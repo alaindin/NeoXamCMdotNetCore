@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -67,17 +68,43 @@ namespace NeoXamFrontNetCore.Serivces
             try
             {
                 addHeaders();
-                var response = await _httpClient.PostAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
+                string a = CreateHttpContent<T>(content).ReadAsStringAsync().Result;
+                var myContent = JsonConvert.SerializeObject(content);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                var response = await _httpClient.PostAsync(requestUrl.ToString(), byteContent);
                 response.EnsureSuccessStatusCode();
               
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return false;
             }
          
+        }
+
+        public async Task<T> LoginAsync<T>(Uri uri)
+        {
+            try
+            {
+                addHeaders();
+                
+
+                var response = await _httpClient.PostAsync(uri.ToString(), null);
+                response.EnsureSuccessStatusCode();
+
+                var data = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                
+            }
         }
 
         /// <summary>
@@ -92,7 +119,12 @@ namespace NeoXamFrontNetCore.Serivces
             try
             {
                 addHeaders();
-                var response = await _httpClient.PutAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
+                string a = CreateHttpContent<T>(content).ReadAsStringAsync().Result;
+                var myContent = JsonConvert.SerializeObject(content);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = await _httpClient.PutAsync(requestUrl.ToString(), byteContent);
                 response.EnsureSuccessStatusCode();
                 var data = await response.Content.ReadAsStringAsync();
                 return true;
@@ -102,7 +134,7 @@ namespace NeoXamFrontNetCore.Serivces
 
                 return false;
             }
-        
+
         }
 
 

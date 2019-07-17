@@ -1,14 +1,14 @@
-﻿@model NeoXamFrontNetCore.Entities.ActionModel
+﻿@model NeoXamFrontNetCore.Entities.Project
 
 @{
-    ViewData["Title"] = "Edit";
-
+    ViewData["Title"] = "Create";
 }
+
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Modifier action</h3>
+                <h3>modifier votre projet</h3>
             </div>
 
 
@@ -23,18 +23,17 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form asp-action="Edit" method="post">
+                        <form asp-action="Edit">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label asp-for="Code" class="control-label"></label>
-                                <input asp-for="Code" class="form-control" />
-                                <span asp-validation-for="Code" class="text-danger"></span>
+                                <label asp-for="Avancement" class="control-label"></label>
+                                <input asp-for="Avancement" class="form-control" />
+                                <span asp-validation-for="Avancement" class="text-danger"></span>
                             </div>
-                            <input hidden="hidden" asp-for="Date" />
                             <div class="form-group">
-                                <label asp-for="Label" class="control-label"></label>
-                                <input asp-for="Label" class="form-control" />
-                                <span asp-validation-for="Label" class="text-danger"></span>
+                                <label asp-for="Designation" class="control-label"></label>
+                                <input asp-for="Designation" class="form-control" />
+                                <span asp-validation-for="Designation" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -42,13 +41,9 @@
                         </form>
                     </div>
                 </div>
-
-                <div>
-                    <a asp-action="Index">Back to List</a>
-                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 
