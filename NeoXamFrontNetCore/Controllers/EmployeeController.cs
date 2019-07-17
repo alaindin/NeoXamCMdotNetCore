@@ -20,18 +20,19 @@ namespace NeoXamFrontNetCore.Controllers
 
         }
         // GET: Employee
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-
-            var test = _empservice.GetAll().Result;
-            return View(test);
+            List<Employee> employees = new List<Employee>();
+            employees =await _empservice.GetAll();
+            return View(employees);
         }
 
-        // GET: Employee/Details/5
+        // GET: Employee/Details/{id}
         public async Task<IActionResult> Details(int id)
         {
-            var emp =await _empservice.Get(id);
-            return View(emp);
+            List<Employee> emps = new List<Employee>();
+            emps = await _empservice.GetAll();
+            return View(emps.FirstOrDefault(d => d.Id == id));
         }
 
         // GET: Employee/Create
@@ -66,13 +67,19 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Employee/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Employee/Edit/{id}
+        public  async Task<IActionResult>  Edit(int id)
         {
-            return View();
+
+            List<Employee> emps = new List<Employee>();
+            emps = await _empservice.GetAll();
+            return View(emps.FirstOrDefault(d => d.Id == id));
+            //Employee emp = await _empservice.Get(id);
+
+            //return View(emp);
         }
 
-        // POST: Employee/Edit/5
+        // POST: Employee/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Employee emp)
@@ -81,6 +88,7 @@ namespace NeoXamFrontNetCore.Controllers
             {
                 if (emp != null)
                 {
+                    emp.Adresse = new Address() { CodePostale = 2046 };
                     await _empservice.Update(id, emp);
                 }
                 else
@@ -97,7 +105,7 @@ namespace NeoXamFrontNetCore.Controllers
             }
         }
 
-        // GET: Employee/Delete/5
+        // GET: Employee/Delete/{id}
         public async Task<IActionResult> Delete(long id)
         {
             try

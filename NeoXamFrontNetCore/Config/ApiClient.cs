@@ -119,7 +119,12 @@ namespace NeoXamFrontNetCore.Serivces
             try
             {
                 addHeaders();
-                var response = await _httpClient.PutAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
+                string a = CreateHttpContent<T>(content).ReadAsStringAsync().Result;
+                var myContent = JsonConvert.SerializeObject(content);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = await _httpClient.PutAsync(requestUrl.ToString(), byteContent);
                 response.EnsureSuccessStatusCode();
                 var data = await response.Content.ReadAsStringAsync();
                 return true;

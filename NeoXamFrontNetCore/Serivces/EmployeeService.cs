@@ -34,7 +34,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<Employee> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                   ApiUrls.GetEmployeById));
+                   ApiUrls.GetEmployeById+id));
             return await _apiClientFactory.ApiClient.GetAsync<Employee>(requestUrl);
         }
 
@@ -49,7 +49,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Update(long id, Employee d)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                     ApiUrls.UpdateEmp));
+                     ApiUrls.UpdateEmp+id));
             return await _apiClientFactory.ApiClient.PutAsync<Employee>(requestUrl, d);
 
         }
