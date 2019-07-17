@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Serivces
 {
-    public class ActionService : IGenericCrud<Entities.Action>
+    public class ActionService : IGenericCrud<ActionModel>
     {
 
         private readonly ApiClientFactory _apiClientFactory;
@@ -17,11 +17,11 @@ namespace NeoXamFrontNetCore.Serivces
         {
             _apiClientFactory = apiClientFactory;
         }
-        public async Task<bool> AddAsync(Entities.Action t)
+        public async Task<bool> AddAsync(ActionModel t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.AddAction));
-            return await _apiClientFactory.ApiClient.PostAsync<Entities.Action>(requestUrl, t);
+            return await _apiClientFactory.ApiClient.PostAsync<ActionModel>(requestUrl, t);
         }
 
 
@@ -34,25 +34,25 @@ namespace NeoXamFrontNetCore.Serivces
 
 
 
-        public async Task<bool> Update(long id, Entities.Action t)
+        public async Task<bool> Update(long id, Entities.ActionModel t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                   ApiUrls.UpdateAction));
-            return await _apiClientFactory.ApiClient.PutAsync<Entities.Action>(requestUrl, t);
+            return await _apiClientFactory.ApiClient.PutAsync<Entities.ActionModel>(requestUrl, t);
         }
 
-       public async Task<Entities.Action> Get(long id)
+       public async Task<Entities.ActionModel> Get(long id)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.FindAction + id));
-            return await _apiClientFactory.ApiClient.GetAsync<Entities.Action>(requestUrl);
+            return await _apiClientFactory.ApiClient.GetAsync<Entities.ActionModel>(requestUrl);
         }
 
-       public  async Task<List<Entities.Action>> GetAll()
+       public  async Task<List<Entities.ActionModel>> GetAll()
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                    ApiUrls.GetAllAction));
-            return await _apiClientFactory.ApiClient.GetAsync<List<Entities.Action>>(requestUrl);
+            return await _apiClientFactory.ApiClient.GetAsync<List<Entities.ActionModel>>(requestUrl);
         }
     }
 }

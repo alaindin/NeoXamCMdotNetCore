@@ -134,7 +134,7 @@ namespace NeoXamFrontNetCore.Serivces
 
                 return false;
             }
-        
+
         }
 
 

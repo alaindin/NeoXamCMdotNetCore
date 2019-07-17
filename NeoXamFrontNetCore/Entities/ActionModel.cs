@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace NeoXamFrontNetCore.Entities
 {
-    public class Action
+    public class ActionModel
     {
-        [JsonProperty(PropertyName = "code")]
+        [JsonProperty(PropertyName = "code", NullValueHandling = NullValueHandling.Ignore)]
         public long Code { get; set; }
-        [JsonProperty(PropertyName = "date")]
+        [JsonProperty(PropertyName = "date", NullValueHandling = NullValueHandling.Ignore)]
         public string Date { get; set; }
         [JsonProperty(PropertyName = "Label")]
         public string Label { get; set; }
-        [JsonProperty(PropertyName = "risquesP")]
+        [JsonProperty(PropertyName = "risquesP", NullValueHandling = NullValueHandling.Ignore)]
         public List<Risk> RisquesP { get; set; }
-        [JsonProperty(PropertyName = "risquesC")]
+        [JsonProperty(PropertyName = "risquesC",NullValueHandling =NullValueHandling.Ignore)]
         public List<Risk> RisquesC { get; set; }
     }
 }
