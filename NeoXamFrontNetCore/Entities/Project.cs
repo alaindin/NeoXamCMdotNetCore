@@ -11,9 +11,9 @@ namespace NeoXamFrontNetCore.Entities
         [JsonProperty(PropertyName = "id")]
         public long Id { get; set; }
         [JsonProperty(PropertyName = "dateDeb")]
-        public DateTime DateDeb { get; set; }
+        public string DateDeb { get; set; }
         [JsonProperty(PropertyName = "DateFin")]
-        public DateTime DateFin { get; set; }
+        public string DateFin { get; set; }
         [JsonProperty(PropertyName = "avancement")]
         public int Avancement { get; set; }
         [JsonProperty(PropertyName = "designation")]
