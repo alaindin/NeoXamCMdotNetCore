@@ -28,7 +28,10 @@ namespace NeoXamFrontNetCore.Controllers
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var user = _userService.Get(id);
+
+            return View(user);
         }
 
         // GET: User/Create
