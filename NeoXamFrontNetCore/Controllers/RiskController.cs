@@ -41,12 +41,15 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Risk/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Risk risk)
         {
             try
             {
-                // TODO: Add insert logic here
+                if(risk !=null && string.IsNullOrEmpty(risk.Description)){
+                    await _riskService.AddAsync(risk);
 
+                    
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -64,11 +67,14 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Risk/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(long id, Risk risk)
         {
             try
             {
-                // TODO: Add update logic here
+                if(risk != null)
+                {
+                    await _riskService.Update(id, risk);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
@@ -79,9 +85,11 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Risk/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(long id)
         {
-            return View();
+            await _riskService.Delete(id);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Risk/Delete/5

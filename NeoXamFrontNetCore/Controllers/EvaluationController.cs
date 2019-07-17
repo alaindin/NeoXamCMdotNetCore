@@ -75,7 +75,7 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: Evaluation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Evaluation evaluation)
+        public async Task<ActionResult> Edit(long id, Evaluation evaluation)
         {
             try
             {
@@ -93,9 +93,10 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Evaluation/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(long id)
         {
-            return View();
+            await _evaluationService.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Evaluation/Delete/5
