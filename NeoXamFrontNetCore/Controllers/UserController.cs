@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -12,30 +13,43 @@ namespace NeoXamFrontNetCore.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private ISession _session => _httpContextAccessor.HttpContext.Session;
+       // private readonly IHttpContextAccessor _httpContextAccessor;
+       // private ISession _session => HttpContext.Session;
+        private static string sessionId = "userId";
+        private static string sessionRole = "userRole";
+
         private UserService _userService;
         public UserController(UserService userService)
         {
             _userService = userService;
+         
+            
         }
         // GET: User
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return View("Login");
+            }
+            var listeUsers = await _userService.GetAll();
+            return View(listeUsers.Where(r=>!r.IsCompleted));
         }
 
         // GET: User/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-
-            var user = _userService.Get(id);
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return View("Login");
+            }
+            var user =await _userService.Get(id);
 
             return View(user);
         }
 
         // GET: User/Create
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
@@ -43,15 +57,16 @@ namespace NeoXamFrontNetCore.Controllers
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
+        public async Task<IActionResult> Create(User user)
         {
             try
             {
                 user.IsCompleted = false;
                 user.Role = "Utilisateur";
+                user.Adresse = new Address { Pays = "Tunisie", CodePostale = 2046, Numero = 36, Rue = "Khaled ibn walid", Ville = "Tunis" };
                 // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                await _userService.AddAsync(user);
+                return RedirectToAction(nameof(Login));
             }
             catch
             {
@@ -60,21 +75,29 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return View("Login");
+            }
+
+            var user = await _userService.Get(id);
+            
+            return View(user);
         }
 
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, User user)
+        public async Task<IActionResult> Edit(int id, User user)
         {
             try
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Index));
+                await _userService.Update(id,user);
+
+                return RedirectToAction(nameof(Details),new { id=id});
             }
             catch
             {
@@ -83,22 +106,64 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: User/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return View("Login");
+            }
+            await  _userService.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IFormFile photo,int id)
+        {
 
-       
+            if (photo != null && photo.Length != 0)
+            {
+                var fileName = Path.GetFileName(photo.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                using (var fileSrteam = new FileStream(filePath, FileMode.Create))
+                {
+                    await photo.CopyToAsync(fileSrteam);
+                }
+
+                User u = new User()
+                {
+                    Id = id,
+                    Photo = fileName,
+                    Adresse = new Address { Pays = "Tunisie", CodePostale = 2046, Numero = 36, Rue = "Khaled ibn walid", Ville = "Tunis" }
+            };
+
+             await   _userService.Update(id, u);
+            }
+            else
+            {
+
+            } 
+            return RedirectToAction(nameof(Details),new { id});
+        }
         public async Task<IActionResult> Login()
         {
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(Details), new { id = HttpContext.Session.GetInt32(sessionId) });
+            }
+           
         }
 
         [HttpPost]
 
         public async Task<IActionResult> Login(string email, string password)
         {
-
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString(sessionRole)))
+            {
+                return RedirectToAction(nameof(Details), new { id = HttpContext.Session.GetInt32(sessionId) });
+            }
             try
             {
                 User user = await _userService.Login(email, password);
@@ -108,17 +173,10 @@ namespace NeoXamFrontNetCore.Controllers
                 }
                 else
                 {
-                    switch (user.Role)
-                    {
-                        case "":
-                            break;
-                        case "a":
-                            break;
-                        case "b":
-                            break;
-                        default:
-                            break;
-                    }
+                    HttpContext.Session.SetString(sessionRole, user.Role);
+                    HttpContext.Session.SetInt32(sessionId, (int)user.Id);
+                    return RedirectToAction(nameof(Details),new { id = HttpContext.Session.GetInt32(sessionId) });
+                   
                 }
             }
             catch
@@ -128,7 +186,14 @@ namespace NeoXamFrontNetCore.Controllers
             }
 
 
-            return View();
+          
+        }
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.SetString(sessionRole, null);
+            HttpContext.Session.SetInt32(sessionId, 0);
+
+            return RedirectToAction(nameof(Login));
         }
     }
 }

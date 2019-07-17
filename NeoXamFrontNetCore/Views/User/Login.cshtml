@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>NeoXam HR Managmenet </title>
 
     <!-- Bootstrap -->
     <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,12 +41,12 @@
                         <h1>Login Form</h1>
                         <div class="form-group">
                             <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
+                            <input asp-for="Email" class="form-control" required=""/>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" class="form-control" />
+                            <input asp-for="Password" class="form-control" required="" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div>
@@ -66,8 +66,8 @@
                             <br />
 
                             <div>
-                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                                <h1><i class="fa fa-paw"></i> NeoXamHRM</h1>
+                                <p>©2016 All Rights Reserved. NeoXam Group</p>
                             </div>
                         </div>
                     </form>
@@ -76,51 +76,36 @@
 
             <div id="register" class="animate form registration_form">
                 <section class="login_content">
-                    <form>
+                    <form asp-action="Create">
                         <h1>Create Account</h1>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Id" class="control-label"></label>
-                            <input asp-for="Id" class="form-control" />
-                            <span asp-validation-for="Id" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
+
+
                         <div class="form-group">
                             <label asp-for="Nom" class="control-label"></label>
-                            <input asp-for="Nom" class="form-control" />
+                            <input asp-for="Nom" class="form-control" required="" />
                             <span asp-validation-for="Nom" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Photo" class="control-label"></label>
-                            <input asp-for="Photo" class="form-control" />
-                            <span asp-validation-for="Photo" class="text-danger"></span>
-                        </div>
+
                         <div class="form-group">
                             <label asp-for="Prenom" class="control-label"></label>
-                            <input asp-for="Prenom" class="form-control" />
+                            <input asp-for="Prenom" class="form-control" required="" />
                             <span asp-validation-for="Prenom" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" required="" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" class="form-control" />
+                            <input asp-for="Password" class="form-control" required="" min="8" type="password" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="RegisterDate" class="control-label"></label>
-                            <input asp-for="RegisterDate" class="form-control" />
-                            <span asp-validation-for="RegisterDate" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Role" class="control-label"></label>
-                            <input asp-for="Role" class="form-control" />
-                            <span asp-validation-for="Role" class="text-danger"></span>
-                        </div>
+                        
+                       
                         <div>
-                            <input class="btn btn-default submit" href="index.html" />
+                            <input class="btn btn-default submit" value="Créer votre compte maintenant" type="submit" />
                         </div>
 
                         <div class="clearfix"></div>

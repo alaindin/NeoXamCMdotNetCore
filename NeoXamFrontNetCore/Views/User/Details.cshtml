@@ -4,69 +4,109 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prenom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prenom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RegisterDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RegisterDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Role)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Role)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsCompleted)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsCompleted)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    
-</div>
+
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Mon profil</h3>
+                </div>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>@Model.Nom @Model.Prenom</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Modifier mon profil</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                                <div class="profile_img">
+                                    <div id="crop-avatar">
+                                        <!-- Current avatar -->
+                                        <img class="img-responsive avatar-view" src="~/images/@(string.IsNullOrEmpty(Model.Photo) ? "profil.png" : Model.Photo)" alt="Avatar" title="Change the avatar">
+                                    </div>
+                                </div>
+                                <h3>@Model.Prenom @Model.Nom</h3>
+
+                                <ul class="list-unstyled user_data">
+                                    <li>
+                                        <i class="fa fa-map-marker user-profile-icon"></i> @Model.Adresse.Pays
+                                    </li>
+
+                                    <li>
+                                        <i class="fa fa-briefcase user-profile-icon"></i> @Model.Email
+                                    </li>
+
+                                   
+                                </ul>
+
+                                <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                                <br>
+
+                                <!-- start skills -->
+                           
+                             
+                                <!-- end of skills -->
+
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <div class="profile_title">
+                                    <div class="col-md-6">
+                                        <h2>Informations</h2>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                            <span>@DateTime.Now</span> <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                             <br />
+                                <br />
+                             <div>
+                                 <form asp-action="UploadImage" enctype="multipart/form-data">
+
+                                     <input type="file" class="form-control" name="photo" />
+                                     <input type="hidden" asp-for="Id" />
+                                     <br />
+                                     <input type="submit" value="Modifier" />
+                                 </form>
+                             </div>
+                                <!-- end of user-activity-graph -->
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+          

@@ -37,7 +37,7 @@ namespace NeoXamFrontNetCore.Serivces
         public async Task<bool> Update(long id, User t)
         {
             var requestUrl = _apiClientFactory.ApiClient.CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                  ApiUrls.userUpdateUser));
+                  ApiUrls.userUpdateUser+id));
             return await _apiClientFactory.ApiClient.PutAsync<User>(requestUrl, t);
         }
 

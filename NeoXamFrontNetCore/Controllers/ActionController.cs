@@ -16,7 +16,7 @@ namespace NeoXamFrontNetCore.Controllers
         public ActionController(ActionService actionService)
         {
             _actionService = actionService;
-        }
+        } 
         // GET: Action
         public  async Task<ActionResult> Index()
         {
