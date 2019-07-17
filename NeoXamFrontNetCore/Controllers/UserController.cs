@@ -128,14 +128,12 @@ namespace NeoXamFrontNetCore.Controllers
                     await photo.CopyToAsync(fileSrteam);
                 }
 
-                User u = new User()
-                {
-                    Id = id,
-                    Photo = fileName,
-                    Adresse = new Address { Pays = "Tunisie", CodePostale = 2046, Numero = 36, Rue = "Khaled ibn walid", Ville = "Tunis" }
-            };
+                User ui = await _userService.Get(id);
+                ui.Photo = fileName;
+                ui.Adresse = new Address { Pays = "Tunisie", CodePostale = 2046, Numero = 36, Rue = "Khaled ibn walid", Ville = "Tunis" };
+             
 
-             await   _userService.Update(id, u);
+             await   _userService.Update(id, ui);
             }
             else
             {
