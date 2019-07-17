@@ -19,7 +19,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Département <small>Liste complète</small></h2>
+                        <h2>Projets <small>Liste complète</small></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -33,12 +33,12 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Id)
                                     </th>
-                                    <th>
+                                    @*<th>
                                         @Html.DisplayNameFor(model => model.DateDeb)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.DateFin)
-                                    </th>
+                                    </th>*@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Avancement)
                                     </th>
@@ -55,12 +55,12 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Id)
                                         </td>
-                                        <td>
+                                        @*<td>
                                             @Html.DisplayFor(modelItem => item.DateDeb)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.DateFin)
-                                        </td>
+                                        </td>*@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Avancement)
                                         </td>
@@ -76,6 +76,10 @@
                                 }
                             </tbody>
                         </table>
+                        <div>
+                            <a asp-action="Create">  <input type="button" value="Ajouter un nouveau projet" class="btn btn-primary" /></a>
+
+                        </div>
                     </div>
                 </div>
             </div>

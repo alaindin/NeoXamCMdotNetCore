@@ -1,72 +1,151 @@
-﻿@model List<Employee>
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model IEnumerable<NeoXamFrontNetCore.Entities.Employee>
 
-<div class="right_col" role="main">
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h3>Liste des employers</h3>
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Liste des employers</h3>
+                </div>
+
+
             </div>
 
-
-        </div>
-
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Settings 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>prenom</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var emp in Model)
-                                {
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-xl-5 col-xl-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Employés <small>Liste complète</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Settings 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table table-bordered">
+                                <thead>
                                     <tr>
+                                        @*<th>
+                                            @Html.DisplayNameFor(model => model.DateEmbauche)
+                                        </th>*@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Poste)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NumTel)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Salaire)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Nom)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Photo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Prenom)
+                                        </th>
+                                        @*<th>
+                                            @Html.DisplayNameFor(model => model.Password)
+                                        </th>*@
+                                        @*<th>
+                                            @Html.DisplayNameFor(model => model.RegisterDate)
+                                        </th>*@
+                                        @*<th>
+                                            @Html.DisplayNameFor(model => model.Role)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IsCompleted)
+                                        </th>*@
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model) {
+                                    <tr>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.DateEmbauche)
+                                        </td>*@
                                         <td>
-                                            @emp.Nom
+                                            @Html.DisplayFor(modelItem => item.Poste)
                                         </td>
                                         <td>
-                                            @emp.Prenom
+                                            @Html.DisplayFor(modelItem => item.NumTel)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Salaire)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nom)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Photo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Prenom)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.Password)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RegisterDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Role)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsCompleted)
+                                        </td>*@
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new { item.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { item.Id })
                                         </td>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+}
+                                </tbody>
+                            </table>
+                            <div>
+                                <a asp-action="Create">  <input type="button" value="Ajouter un nouveau employé" class="btn btn-primary" /></a>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>

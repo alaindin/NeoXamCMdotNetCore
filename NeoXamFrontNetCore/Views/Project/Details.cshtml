@@ -28,7 +28,7 @@
                                     @Html.DisplayFor(model => model.Id)
                                 </div>
                             </div>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col-sm-2">
                                     @Html.DisplayNameFor(model => model.DateDeb)
                                 </div>
@@ -43,7 +43,7 @@
                                 <div class="col-sm-2">
                                     @Html.DisplayFor(model => model.DateFin)
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="row">
                                 <div class="col-sm-2">
                                     @Html.DisplayNameFor(model => model.Avancement)
@@ -63,7 +63,7 @@
                                    
                                 </div>
                                 <div>
-                                    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                                    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id}) |
                                     <a asp-action="Index">Back to List</a>
                                 </div>
                             </div>
@@ -72,4 +72,3 @@
 
         </div>
     </div>
-</div>
