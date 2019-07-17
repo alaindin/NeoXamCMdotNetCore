@@ -59,9 +59,12 @@ namespace NeoXamFrontNetCore.Controllers
         }
 
         // GET: Risk/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(long id)
         {
-            return View();
+            List<Risk> risks = new List<Risk>();
+            risks=await _riskService.GetAll();
+
+            return View(risks.FirstOrDefault(d=>d.Code==id));
         }
 
         // POST: Risk/Edit/5

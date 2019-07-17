@@ -26,10 +26,10 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Code Employé</th>
+                                    <th> Employé</th>
                                     <th>Code Risque</th>
-                                    <th>Date de l'évaluation</th>
-                                    <th>Valeur de l'évaluation</th>
+                                   
+                                    <th>Valeur de l'évaluation(%)</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,14 +38,13 @@
                                 {
                                 <tr>
                                     <td>
-                                        @eval.employee.Prenom
+                                        @eval.employee.Nom
+
                                     </td>
                                     <td>
-                                        @eval.Risque?.Description
+                                        @eval.Id.RisqueId
                                     </td>
-                                    <td>
-                                        @eval.Date
-                                    </td>
+                                    
                                     <td>
                                         @eval.RisqueGlobal
                                     </td>

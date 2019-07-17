@@ -14,11 +14,14 @@ namespace NeoXamFrontNetCore.Controllers
 
         EvaluationService _evaluationService;
         EmployeeService _employeeService;
+        RiskService _riskService;
 
-        public EvaluationController(EvaluationService evaluationService, EmployeeService employeeService)
+
+        public EvaluationController(EvaluationService evaluationService, EmployeeService employeeService, RiskService riskService)
         {
             _evaluationService = evaluationService;
             _employeeService = employeeService;
+            _riskService = riskService;
         }
 
         // GET: Evaluation
@@ -32,8 +35,10 @@ namespace NeoXamFrontNetCore.Controllers
                 var e = new Evaluation() ;
                 e = v;
                 e.employee = await _employeeService.Get(v.Id.EmpId);
+               
 
             }
+          
             return View(evaluations);
         }
 
