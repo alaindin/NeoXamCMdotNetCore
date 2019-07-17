@@ -49,7 +49,8 @@ namespace NeoXamFrontNetCore.Controllers
             {
                 if (emp != null)
                 {
-
+                    emp.Adresse = new Address() { CodePostale = 2046};
+                    
                     await _empservice.AddAsync(emp);
                 }
                 else

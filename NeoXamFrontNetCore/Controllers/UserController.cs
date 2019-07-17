@@ -104,12 +104,12 @@ namespace NeoXamFrontNetCore.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Login(string login, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
 
             try
             {
-                User user = await _userService.Login(login, password);
+                User user = await _userService.Login(email, password);
                 if (user == null)
                 {
                     return View();
